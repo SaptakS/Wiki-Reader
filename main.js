@@ -150,6 +150,7 @@ function initMain() {
 		window.speechSynthesis.cancel();
 	} else {
 		localStorage.state = 'speaking';
+		window.speechSynthesis.getVoices();
 		var readable_text = initParagraphParsing();
 		console.log(readable_text);
 		doTTS(readable_text);
@@ -171,7 +172,7 @@ function initParagraphParsing() {
 		cleaned_content += cleanContent(main_content_paragraphs[i]);
 		//console.log(cleaned_content);
 	}
-	return cleaned_content;
+	return cleaned_content.toLowerCase();
 }
 
 function cleanContent(content) {
